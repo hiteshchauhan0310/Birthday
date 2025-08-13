@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Happy Birthday Diksha!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --bg-dark: linear-gradient(135deg,#8a1871 0%,#bb4169 70%);
+    --card-grad: radial-gradient(circle at top left,#ec77c9 0%,#321f5f 60%);
+    --accent1: #d946ef;
+    --accent2: #f9a826;
+    --text:#f0e8ff;
+    --radius:24px;
+    --shadow: 0 45px 100px -10px rgba(217,108,211,0.35);
+    --serif: "Georgia","Palatino Linotype",serif;
+    --transition:.35s cubic-bezier(.4,.2,.2,1);
+  }
+  *{box-sizing:border-box;}
+  body {
+    margin:0;
+    background: var(--bg-dark);
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color: var(--text);
+    min-height:100vh;
+    overflow-y:auto;
+    padding:0;
+    line-height:1.35;
+    -webkit-font-smoothing:antialiased;
+    transition: background .6s ease;
+  }
+  .overlay-name{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+    z-index:900;
+    background:rgba(31,15,61,0.6);
+  }
+  .name-box{
+    font-size:clamp(3rem,10vw,8rem);
+    font-weight:900;
+    letter-spacing:4px;
+    font-family: var(--serif);
+    color:#f9a826;
+    text-shadow:
+      0 0 60px rgba(249,168,38,0.8),
+      0 0 120px rgba(217,70,239,0.7);
+    opacity:0;
+    transform:scale(.6);
+    animation: popname 5s forwards;
+  }
+  @keyframes popname {
+    0% { opacity:0; transform: scale(.6) rotate(-2deg); }
+    10% { opacity:1; transform: scale(1.35) rotate(0deg); }
+    35% { opacity:1; transform: scale(1) rotate(0deg); }
+    100% { opacity:0; transform: scale(.7) rotate(2deg); }
+  }
+  .wrapper{
+    max-width:1120px;
+    margin:auto;
+    padding:20px 16px 80px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:24px;
+    position:relative;
+    z-index:1;
+  }
+  .card{
+    position:relative;
+    border-radius:28px;
+    padding:26px 22px;
+    box-shadow: var(--shadow);
+    flex:1 1 320px;
+    min-width:260px;
+    overflow:hidden;
+    background: rgba(191, 152, 233, 0.15);
+    backdrop-filter: blur(6px);
+    border:1px solid rgba(32, 15, 15, 0.08);
+    transition: var(--transition);
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      url('data:image/svg+xml;utf8,<svg width="220" height="220" xmlns="http://www.w3.org/2000/svg"><circle cx="110" cy="110" r="100" fill="none" stroke="%23e0c0ff" stroke-width="7" stroke-opacity="0.08"/><path d="M110 20a90 90 0 1 1 0 180a90 90 0 1 1 0-180" fill="none" stroke="%23f7d6fa" stroke-width="5" stroke-opacity="0.06"/></svg>') no-repeat 80% 80%/220px 220px;
+    pointer-events:none;
+    mix-blend-mode:soft-light;
+  }
+  .hero{
+    flex:2 1 580px;
+    background: var(--card-grad);
+    border:1px solid rgba(255,255,255,0.08);
+    position:relative;
+    font-family: var(--serif);
+    overflow:hidden;
+    color: #f0e8ff;
+  }
+  .hero .pattern{
+    position:absolute;
+    width:200px;
+    height:200px;
+    top:-10px;
+    right:-10px;
+    background: radial-gradient(circle at 50% 50%, rgba(206, 111, 221, 0.1) 0%, transparent 55%);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  h1{
+    margin:0;
+    font-size:2.5rem;
+    line-height:1.1;
+    font-family: var(--serif);
+  }
+  .subtitle{
+    margin:8px 0 14px;
+    font-size:1rem;
+    color:#f5f795;
+  }
+  .message{
+    font-size:1rem;
+    margin-top:6px;
+  }
+  .btn{
+    cursor:pointer;
+    border:none;
+    padding:12px 18px;
+    border-radius:999px;
+    font-weight:700;
+    background: linear-gradient(135deg,var(--accent1),var(--accent2));
+    color:#fff;
+    font-size:0.9rem;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition: var(--transition);
+    margin-right:6px;
+    position:relative;
+    overflow:hidden;
+  }
+  .btn:hover{filter:brightness(1.08);}
+  .countdown{
+    margin-top:14px;
+    display:inline-block;
+    background: rgba(255,255,255,0.05);
+    padding:12px 16px;
+    border-radius:14px;
+    font-weight:600;
+    font-size:0.9rem;
+    border:1px solid rgba(217,70,239,0.2);
+  }
+  .media{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-top:16px;
+  }
+  .photo{
+    width:200px;
+    border-radius:18px;
+    overflow:hidden;
+    background: rgba(255,255,255,0.08);
+    flex-shrink:0;
+    position:relative;
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .photo img{
+    display:block;
+    width:100%;
+    object-fit:cover;
+    aspect-ratio:4/3;
+    mix-blend-mode:normal;
+  }
+  .video-wrapper{
+    flex:1;
+    min-width:200px;
+    border-radius:14px;
+    overflow:hidden;
+    background:#000;
+    position:relative;
+  }
+  video{
+    width:100%;
+    display:block;
+    border-radius:12px;
+    max-height:260px;
+  }
+  .letter{
+    margin-top:20px;
+    background: rgba(255,255,255,0.08);
+    border-radius:16px;
+    padding:18px;
+    color:#e8d8ff;
+    font-size:0.95rem;
+    line-height:1.4;
+    display:none;
+    box-shadow:0 40px 90px -10px rgba(217,70,239,0.2);
+    border:1px solid rgba(249,168,38,0.15);
+    position:relative;
+    backdrop-filter: blur(4px);
+  }
+  .extras{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .label{
+    font-size:0.75rem;
+    letter-spacing:1px;
+    font-weight:600;
+    margin-bottom:6px;
+    text-transform:uppercase;
+    color:#f1f37c;
+  }
+  .burst-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:800;
+  }
+  .shape{
+    position:absolute;
+    will-change:transform,opacity;
+    opacity:0;
+    pointer-events:none;
+  }
+  .heart{
+    width:32px; height:32px;
+  }
+  .heart-inner:before,
+  .heart-inner:after{
+    content:"";
+    position:absolute;
+    width:16px; height:24px;
+    background: radial-gradient(circle at 50% 50%, #d81b24 70%, #b63737);
+    border-radius:50% 50% 0 0;
+    top:0;
+    left:6px;
+    transform:rotate(-45deg);
+    transform-origin:0 100%;
+    box-shadow:0 0 10px rgba(180, 37, 37, 0.7);
+  }
+  .heart-inner:after{
+    left:auto;
+    right:6px;
+    transform:rotate(45deg);
+  }
+  .balloon{
+    width:40px; height:56px;
+    border-radius:50% 50% 60% 60%;
+    background: linear-gradient(135deg,#f9a826 0%,#d946ef 85%);
+    position:relative;
+    box-shadow:0 18px 50px -5px rgba(217,70,239,0.35);
+  }
+  .balloon::after{
+    content:"";
+    position:absolute;
+    bottom:-16px;
+    left:50%;
+    transform:translateX(-50%);
+    width:2px; height:18px;
+    background:#b64bc9;
+    border-radius:1px;
+  }
+  .rose{
+    width:34px; height:34px;
+  }
+  .sparkle{
+    font-size:24px;
+    color:#ffe066;
+    text-shadow:0 0 10px rgba(255,224,102,0.9);
+  }
+  .confetti-piece{
+    position:absolute;
+    width:8px; height:8px;
+    background: linear-gradient(135deg,#f9d976,#f0932b);
+    border-radius:2px;
+    opacity:0;
+    will-change: transform, opacity;
+  }
+  .bg-btns{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:8px;
+  }
+  .carousel{
+    margin-top:12px;
+    position: relative;
+    background: rgba(235, 136, 205, 0.04);
+    border:1px solid rgba(223, 195, 228, 0.12);
+    border-radius:16px;
+    padding:14px 16px;
+    min-height:160px;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    gap:8px;
+    font-family: var(--serif);
+  }
+  .memory-text{
+    font-size:1rem;
+    line-height:1.35;
+    margin:0;
+    color:#e9f19a;
+  }
+  .carousel-controls{
+    display:flex;
+    justify-content: space-between;
+    gap:12px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .memory-indicator{
+    font-size:0.75rem;
+    color:#d9c0ff;
+  }
+  .video-reveal {
+    margin-top:12px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .watch-btn {
+    background: rgba(255,255,255,0.1);
+    border:1px solid rgba(249,168,38,0.6);
+    color:#fff;
+    padding:10px 16px;
+    border-radius:999px;
+    cursor:pointer;
+    font-weight:600;
+    display:inline-flex;
+    gap:6px;
+    font-size:0.9rem;
+    transition:filter .2s;
+  }
+  .watch-btn:hover{filter:brightness(1.1);}
+  .play-audio-btn {
+    background: #f9a826;
+    color:#2a0f4d;
+    padding:10px 16px;
+    border:none;
+    border-radius:999px;
+    cursor:pointer;
+    font-weight:700;
+    display:inline-flex;
+    gap:6px;
+    font-size:0.9rem;
+    margin-top:8px;
+  }
+  @media (max-width:900px){
+    .wrapper{flex-direction:column;}
+    .hero, .card{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- Name intro overlay -->
+  <div class="overlay-name" id="intro-overlay">
+    <div class="name-box">HEY DIKSHA🌺</div>
+  </div>
+
+  <!-- Burst root -->
+  <div class="burst-container" id="burst-root" aria-hidden="true"></div>
+
+  <div class="wrapper" aria-label="Birthday surprise for Diksha">
+    <!-- Hero card -->
+    <div class="card hero">
+      <div class="pattern" aria-hidden="true"></div>
+      <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start;">
+        <div style="flex:1; min-width:260px;">
+          <div style="font-size:0.85rem; letter-spacing:1px; text-transform:uppercase; color:#d9c0ff; margin-bottom:6px;">Shayad tumhe Accha lge...</div>
+          <h1 style="margin-bottom:6px;">Happy Birthday, <span style="color:#f9a826;">DIKSHA💖</span></h1>
+          <div class="subtitle">Instructions likhi hui hn unhe read kr lena....</div>
+          <div class="message">
+            Hey <strong>Diksha</strong>, this moment is for you. Every shimmer, hidden floral detail, and burst carries a piece of the warmth I wish you.<br>1.Reveal letter <br> 2.Watch Surprise(Full Screen) <br>3.Play me <br> Thn rest of the things.
+          </div>
+          <div class="countdown" id="countdown">Loading countdown...</div>
+          <div style="margin-top:16px;">
+            <button class="btn" id="reveal-btn">🎁 Reveal Letter</button>
+            <button class="btn" id="big-surprise">✨Click Me</button>
+          </div>
+          <div class="letter" id="letter-box">
+            <p style="margin:6px 0;">💌 <strong>Diksha💖 </strong>,</p>
+            <p style="margin:6px 0;">Today is yours — not just because the calendar says so,
+but because the world feels a little brighter
+knowing you were born on this day.
+
+I could say a thousand wishes,
+but they all come down to this —
+may your dreams keep growing,
+your health stay strong,
+and your heart stay as fearless as it has always been. So, on your special day,
+I just want to see you smiling —
+not just today, but always.
+
+<h3>Happy Birthday… you truly deserve every bit of happiness this world can offer.</h3> 
+
+Always wishing the best for you...</p>
+            <p style="margin:6px 0;">With love,<br/><strong>Arjun</strong></p>
+          </div>
+        </div>
+        <div style="flex:1; min-width:240px;">
+          <div class="media">
+            <div class="photo" aria-label="Her photo">
+              <!-- Replace with her actual photo -->
+             <img src="Diksha.jpg" alt="Diksha" />
+
+
+            </div>
+            <div style="flex:1; min-width:200px;">
+              <div style="font-weight:600; margin-bottom:6px;">Video Surprise</div>
+              <div class="video-wrapper" id="video-container" style="display:none;">
+                <video id="birthday-video" controls playsinline>
+                  <source src="diksha.mp4" type="video/mp4">
+                  Your browser doesn't support video.
+                </video>
+              </div>
+              <div class="video-reveal">
+                <button class="watch-btn" id="show-video-btn">🎬 Watch Surprise</button>
+                <div id="video-hint" style="font-size:0.75rem; margin-top:4px; color:#d9c0ff;">Click to reveal the video.</div>
+              </div>
+              <div class="small" style="margin-top:12px;">After the video ends “Play Me” pr clickk krna aur end me ek fav song hai...</div>
+              <div id="audio-container" style="margin-top:12px; display:none;">
+                <button class="play-audio-btn" id="play-audio-btn">▶️ Play Me</button>
+                <audio id="birthday-audio" preload="auto" style="display:none;">
+                  <source src="voice.mp3" type="audio/mpeg">
+                  Your browser doesn’t support audio.
+                </audio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extras & carousel -->
+    <div class="card">
+      <div class="extras">
+        <div>
+          <div class="label">Mood change kr skti ho...or Click Me pr bar bar click krna...</div>
+          <div class="subtitle">Dark theme nd background switch....or background noise distortion k liye sorry or meri aavaj acchi nhi lgri haha...... hope tumhe ye sb accha lge</div>
+        </div>
+        <div>
+          <div style="margin-bottom:6px;"><strong>Change background:</strong></div>
+          <div class="bg-btns">
+            <button class="btn" id="change-bg">Change Mood</button>
+          </div>
+        </div>
+        <div class="carousel" aria-label="Memories carousel">
+          <div style="display:flex; justify-content: space-between; align-items:flex-start; gap:10px;">
+            <div>
+              <div style="font-weight:600; margin-bottom:4px;">Three things about you</div>
+              <p class="memory-text" id="memory-text">Your voice in late-night talks still echoes like comfort I can’t replace."”</p>
+            </div>
+            <div class="memory-indicator" id="memory-indicator">1 / 3</div>
+          </div>
+          <div class="carousel-controls">
+            <button class="btn" id="next-memory">Next →</button>
+          </div>
+          <div style="margin-top:8px; font-size:0.7em; color:rgba(255,215,255,0.8);">
+            Refresh kr lena dobara sb play krne k liye.........
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rose template -->
+  <template id="rose-template">
+    <div class="rose shape">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 12c-6 0-10 5-10 10 0 1 .2 2 .6 2.9C19.3 27 16 31 16 36c0 7 5.7 12 12 12 2.6 0 5-.9 7-2.4 2 1.5 4.4 2.4 7 2.4 6.3 0 12-5 12-12 0-5-3.3-9-6.6-11.1.4-.9.6-1.9.6-2.9 0-5-4-10-10-10z" fill="#c95999"/>
+        <circle cx="32" cy="32" r="6" fill="#ffe7f5"/>
+      </svg>
+    </div>
+  </template>
+
+<script>
+  // Countdown
+  const countdownEl = document.getElementById("countdown");
+  const target = new Date("July 31, 2025 23:59:59");
+  function updateCountdown(){
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0){
+      countdownEl.textContent = "";
+      return;
+    }
+    const d = Math.floor(diff/(1000*60*60*24));
+    const h = Math.floor((diff/(1000*60*60))%24);
+    const m = Math.floor((diff/(1000*60))%60);
+    const s = Math.floor((diff/1000)%60);
+    countdownEl.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown,1000);
+
+  // Burst logic
+  const burstRoot = document.getElementById("burst-root");
+  function rand(min,max){ return Math.random()*(max-min)+min; }
+  
+  function createBalloon(){
+    const el = document.createElement("div");
+    el.className="balloon shape";
+    el.style.width=rand(34,46)+"px";
+    el.style.height=rand(50,64)+"px";
+    animateShape(el);
+  }
+  function createRose(){
+    const tmpl = document.getElementById("rose-template");
+    const clone = tmpl.content.firstElementChild.cloneNode(true);
+    clone.classList.add("shape");
+    clone.style.width=rand(32,36)+"px";
+    clone.style.height=clone.style.width;
+    animateShape(clone);
+  }
+  function createSparkle(){
+    const el = document.createElement("div");
+    el.className="sparkle shape";
+    el.textContent="✨ 💞   🌼";
+    animateShape(el);
+  }
+  function animateShape(el){
+    const side = Math.floor(Math.random()*4);
+    let sx, sy, dx, dy;
+    if (side===0){ sx=rand(5,95); sy=-10; dx=rand(-60,60); dy=rand(80,160); }
+    else if (side===1){ sx=105; sy=rand(5,95); dx=-rand(80,160); dy=rand(-40,40); }
+    else if (side===2){ sx=rand(5,95); sy=105; dx=rand(-60,60); dy=-rand(80,160); }
+    else { sx=-10; sy=rand(5,95); dx=rand(80,160); dy=-rand(40,40); }
+    el.style.left=sx+"%";
+    el.style.top=sy+"%";
+    burstRoot.appendChild(el);
+    const duration=rand(3,4.5);
+    requestAnimationFrame(()=>{
+      el.style.transition=`transform ${duration}s ease-out, opacity ${duration*.9}s ease-out`;
+      el.style.opacity=1;
+      el.style.transform=`translate(${dx}px, ${dy}px) scale(1.1)`;
+    });
+    setTimeout(()=>{ el.style.opacity=0; }, duration*1000 - 200);
+    setTimeout(()=>{ if(el.parentElement) el.remove(); }, duration*1000 + 300);
+  }
+  function burstMany(n){
+    for(let i=0;i<n;i++){
+      const r=Math.random();
+      if (r<0.25) createHeart();
+      else if (r<0.5) createRose();
+      else if (r<0.75) createBalloon();
+      else createSparkle();
+    }
+  }
+  function spawnConfetti(count=80){
+    for(let i=0;i<count;i++){
+      const c=document.createElement("div");
+      c.className="confetti-piece";
+      const size=rand(6,12);
+      c.style.width=size+"px";
+      c.style.height=size+"px";
+      c.style.left=rand(10,90)+"%";
+      c.style.top=rand(10,90)+"%";
+      burstRoot.appendChild(c);
+      const dx=rand(-140,140);
+      const dy=rand(-140,140);
+      const duration=rand(1.2,2);
+      requestAnimationFrame(()=>{
+        c.style.transition=`transform ${duration}s ease-out, opacity ${duration}s ease-out`;
+        c.style.opacity=1;
+        c.style.transform=`translate(${dx}px, ${dy}px) rotate(${rand(360,1080)}deg)`;
+      });
+      setTimeout(()=>{ c.style.opacity=0; }, duration*1000 - 100);
+      setTimeout(()=>{ if(c.parentElement) c.remove(); }, duration*1000 + 300);
+    }
+  }
+
+  // Intro
+  window.addEventListener("load", ()=>{
+    const end=Date.now()+5000;
+    const iv=setInterval(()=>{ burstMany(16); }, 300);
+    setTimeout(()=>{ clearInterval(iv); }, 5000);
+    setTimeout(()=>{
+      const ov=document.getElementById("intro-overlay");
+      if(ov){ ov.style.transition="opacity .6s"; ov.style.opacity=0; setTimeout(()=>ov.remove(),800);}
+    },5000);
+  });
+
+  // Letter reveal and big surprise
+  document.getElementById("reveal-btn").addEventListener("click", ()=>{
+    document.getElementById("letter-box").style.display="block";
+    burstMany(40);
+  });
+  document.getElementById("big-surprise").addEventListener("click", ()=>{
+    document.getElementById("letter-box").style.display="block";
+    burstMany(70);
+    spawnConfetti(120);
+  });
+
+  // Background switcher
+  const backgrounds=[
+    "linear-gradient(135deg,#1f0f3d 0%,#0f1f3f 70%)",
+    "linear-gradient(135deg,#2a1f5d 0%,#0f2f5f 70%)",
+    "linear-gradient(135deg,#1f253f 0%,#0f3f5f 70%)",
+    "linear-gradient(135deg,#0f1f2f 0%,#1f3f5f 70%)"
+  ];
+  let bgIndex=0;
+  document.getElementById("change-bg").addEventListener("click", ()=>{
+    bgIndex=(bgIndex+1)%backgrounds.length;
+    document.body.style.background=backgrounds[bgIndex];
+    burstMany(16);
+  });
+
+  // Memories carousel
+  const memories=[
+    "“Your voice in late-night talks still echoes like comfort I can’t replace.”",
+    "“Aur tumhara apne life goals and career ke liye itna dedicated hona, I really appreciate that....”",
+    "“Family restrictions hone ke baad bhi apne liye stand lena, aur vo sab karna jo tum chahti thi — mandir jana… and everything...”"
+  ];
+  let memIndex=0;
+  const memTextEl=document.getElementById("memory-text");
+  const memIndicator=document.getElementById("memory-indicator");
+  function showMemory(i){
+    memTextEl.textContent=memories[i];
+    memIndicator.textContent=`${i+1} / ${memories.length}`;
+  }
+  document.getElementById("next-memory").addEventListener("click", ()=>{
+    memIndex=(memIndex+1)%memories.length;
+    showMemory(memIndex);
+    burstMany(6);
+  });
+  setInterval(()=>{
+    memIndex=(memIndex+1)%memories.length;
+    showMemory(memIndex);
+  },8000);
+  showMemory(memIndex);
+
+  // Video reveal and audio play logic
+  const showVideoBtn = document.getElementById("show-video-btn");
+  const videoContainer = document.getElementById("video-container");
+  const videoEl = document.getElementById("birthday-video");
+  const audioContainer = document.getElementById("audio-container");
+  const playAudioBtn = document.getElementById("play-audio-btn");
+  const audioEl = document.getElementById("birthday-audio");
+
+  showVideoBtn.addEventListener("click", ()=>{
+    videoContainer.style.display="block";
+    showVideoBtn.style.display="none";
+    document.getElementById("video-hint").textContent="Enjoy the surprise!";
+    // autoplay if allowed
+    videoEl.play().catch(()=>{});
+  });
+
+  videoEl.addEventListener("ended", ()=>{
+    // show play me audio button
+    audioContainer.style.display="block";
+  });
+
+  playAudioBtn.addEventListener("click", ()=>{
+    audioEl.currentTime=0;
+    audioEl.play().catch(()=>{});
+  });
+</script>
+</body>
+</html>
